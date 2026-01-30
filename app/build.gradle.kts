@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -28,11 +31,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        jvmToolchain(21)
     }
     buildFeatures {
         compose = true
@@ -58,6 +61,13 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation(libs.coil.compose)
-    implementation("io.coil-kt.coil3:coil-network-okhttp:3.3.0")
+    implementation(libs.coil.network.okhttp)
+    implementation(libs.square.retrofit)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.retrofit.converter.kotlinx)
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    ksp(libs.hilt.compiler)
 
 }
