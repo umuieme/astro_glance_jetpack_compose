@@ -27,8 +27,14 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), modifier: Modifier){
         when (val s = state) {
             is HomeState.Loading -> Loading(modifier = Modifier.align(Alignment.Center))
             is HomeState.Error -> ErrorView(message = s.message, modifier = Modifier.align(Alignment.Center))
-            is HomeState.Success -> ApodHomeListView(apodList = s.items)
-
+            is HomeState.Success -> {
+                ApodHomeListView(
+                    apodList = s.items,
+                    onPageSelected = { page ->
+                        viewModel.onListScroll(page, s.items.size)
+                    }
+                )
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.dagger.hilt) apply false
-
+    alias(libs.plugins.secrets.gradle) apply false
     kotlin("jvm") version "2.3.0"
     kotlin("plugin.serialization") version "2.3.0"
 }

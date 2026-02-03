@@ -6,7 +6,7 @@ import com.umuieme.astroglance.domain.repository.ApodRepository
 import javax.inject.Inject
 
 class ApodRepositoryImpl @Inject constructor(private val api: NasaApi) : ApodRepository {
-    override suspend fun getApod(): List<ApodModel> {
-        return api.getApod()
+    override suspend fun getApod(startDate: String, endDate: String): List<ApodModel> {
+        return api.getApod(startDate = startDate, endDate = endDate)
     }
 }
